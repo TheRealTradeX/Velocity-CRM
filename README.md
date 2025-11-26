@@ -1,125 +1,77 @@
-# Next.js Admin Template with TypeScript & Shadcn UI
+# Velocity CRM – Admin Dashboard for Velocity Funds
 
-**Studio Admin** - Includes multiple dashboards, authentication layouts, customizable theme presets, and more.
+Velocity CRM is the internal-facing admin dashboard for **Velocity Funds**, a futures prop firm and capital allocation company.
 
-<img src="https://github.com/arhamkhnz/next-shadcn-admin-dashboard/blob/main/media/dashboard.png?version=5" alt="Dashboard Screenshot">
+This app is used by the Velocity team to:
 
-Most admin templates I found, free or paid, felt cluttered, outdated, or too rigid. I built this as a cleaner alternative with features often missing in others, such as theme toggling and layout controls, while keeping the design modern, minimal, and flexible.
+- Monitor trader performance and risk
+- Review evaluation accounts and funded accounts
+- Track daily PnL, win rate, and drawdown
+- Manage payouts, compliance, and internal operations
 
-Iâ€™ve taken design inspiration from various sources. If youâ€™d like credit for something specific, feel free to open an issue or reach out.
+It is **not** the public marketing site or trader-facing landing page – it’s the internal “command center” for Velocity Funds.
 
-> **View demo:** [studio admin](https://next-shadcn-admin-dashboard.vercel.app)
-
-> [!TIP]
-> Iâ€™m also working on Nuxt.js, Svelte, and React (Vite + TanStack Router) versions of this dashboard. Theyâ€™ll be live soon.
-
-## Features
-
-- Built with Next.js 16, TypeScript, Tailwind CSS v4, and Shadcn UI  
-- Responsive and mobile-friendly  
-- Customizable theme presets (light/dark modes with color schemes like Tangerine, Brutalist, and more)  
-- Flexible layouts (collapsible sidebar, variable content widths)  
-- Authentication flows and screens  
-- Prebuilt dashboards (Default, CRM, Finance) with more coming soon  
-- Role-Based Access Control (RBAC) with config-driven UI and multi-tenant support *(planned)*  
-
-> [!NOTE]
-> The default dashboard uses the **shadcn neutral** theme.  
-> It also includes additional color presets inspired by [Tweakcn](https://tweakcn.com):  
->
-> - Tangerine  
-> - Neo Brutalism  
-> - Soft Pop  
->
-> You can create more presets by following the same structure as the existing ones.
-
-> Looking for the **Next.js 15** version?  
-> Check out the [`archive/next15`](https://github.com/arhamkhnz/next-shadcn-admin-dashboard/tree/archive/next15) branch.  
-> This branch contains the setup prior to upgrading to Next 16 and the React Compiler.
-
-> Looking for the **Next.js 14 + Tailwind CSS v3** version?  
-> Check out the [`archive/next14-tailwindv3`](https://github.com/arhamkhnz/next-shadcn-admin-dashboard/tree/archive/next14-tailwindv3) branch.  
-> It has a different color theme and is not actively maintained, but I try to keep it updated with major changes.  
+---
 
 ## Tech Stack
 
-- **Framework**: Next.js 16 (App Router), TypeScript, Tailwind CSS v4  
-- **UI Components**: Shadcn UI  
-- **Validation**: Zod  
-- **Forms & State Management**: React Hook Form, Zustand  
-- **Tables & Data Handling**: TanStack Table  
-- **Tooling & DX**: ESLint, Prettier, Husky  
+- **Framework:** Next.js 16 (App Router)
+- **Language:** TypeScript
+- **UI Library:** React
+- **Design System:** shadcn/ui
+- **Styling:** Tailwind CSS
+- **State / Data:** React hooks + server components (Next.js conventions)
+- **Build Tooling:** Turbopack, ESLint, Prettier
 
-## Screens
+---
 
-### Available
-- Default Dashboard  
-- CRM Dashboard  
-- Finance Dashboard  
-- Authentication (4 screens)
+## Features
 
-### Coming Soon
-- Analytics Dashboard  
-- eCommerce Dashboard  
-- Academy Dashboard  
-- Logistics Dashboard  
-- Email Page  
-- Chat Page  
-- Calendar Page  
-- Kanban Board  
-- Invoice Page  
-- Users Management  
-- Roles Management  
+### Dashboards
 
-## Colocation File System Architecture
+- **Trader Dashboard**
+  - Account summary (status, account id)
+  - Current balance and total PnL
+  - Today’s PnL and remaining daily loss
+  - Drawdown usage and remaining risk
+  - Tabs for:
+    - Equity Curve (chart placeholder)
+    - Evaluation Rules snapshot
+    - Daily Performance table (PnL, win rate, contracts, max DD, notes)
 
-This project follows a **colocation-based architecture** each feature keeps its own pages, components, and logic inside its route folder.  
-Shared UI, hooks, and configuration live at the top level, making the codebase modular, scalable, and easier to maintain as the app grows.
+- **Default / CRM / Finance Dashboards (template)**
+  - Pre-built layouts from the base template
+  - Can be repurposed into:
+    - Risk Management
+    - Finance / Payouts
+    - Support & Compliance views
 
-For a full breakdown of the structure with examples, see the [Next Colocation Template](https://github.com/arhamkhnz/next-colocation-template).
+### Layout & Navigation
+
+- Responsive sidebar navigation with sections for:
+  - Dashboards (Trader, Default, CRM, Finance)
+  - Future pages (Analytics, E-commerce, Academy, etc.)
+- Collapsible sidebar and “Quick Create” entry point
+- User profile section in the sidebar with name + email
+
+### Theming & UI
+
+- Dark theme by default
+- Uses shadcn/ui components for a consistent look:
+  - Cards, Tabs, Tables, Badges, Buttons, etc.
+- Tailwind-based styling for fast customization
+
+---
 
 ## Getting Started
 
-You can run this project locally, or deploy it instantly with Vercel.
+### Prerequisites
 
-### Deploy with Vercel
+- **Node.js** >= 18
+- **npm** or **pnpm** or **yarn**
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Farhamkhnz%2Fnext-shadcn-admin-dashboard)
+Verify Node:
 
-_Deploy your own copy with one click._
-
-### Run locally
-
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/arhamkhnz/next-shadcn-admin-dashboard.git
-   ```
-   
-2. **Navigate into the project**
-   ```bash
-    cd next-shadcn-admin-dashboard
-   ```
-   
-3. **Install dependencies**
-   ```bash
-    npm install
-   ```
-
-4. **Start the development server**
-   ```bash
-   npm run dev
-   ```
-
-Your app will be running at [http://localhost:3000](http://localhost:3000)
-
----
-
-> [!IMPORTANT]  
-> This project is updated frequently. If youâ€™re working from a fork or an older clone, pull the latest changes before syncing. Some updates may include breaking changes.
-
----
-
-Contributions are welcome. Feel free to open issues, feature requests, or start a discussion.
-
-
-**Happy Vibe Coding!**
+```bash
+node -v
+```

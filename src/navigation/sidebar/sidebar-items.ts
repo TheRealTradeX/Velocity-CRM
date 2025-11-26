@@ -15,6 +15,7 @@ import {
   Banknote,
   Gauge,
   GraduationCap,
+  LineChart,
   type LucideIcon,
 } from "lucide-react";
 
@@ -48,6 +49,11 @@ export const sidebarItems: NavGroup[] = [
     id: 1,
     label: "Dashboards",
     items: [
+      {
+        title: "Trader",
+        url: "/dashboard/trader",
+        icon: LineChart,
+      },
       {
         title: "Default",
         url: "/dashboard/default",

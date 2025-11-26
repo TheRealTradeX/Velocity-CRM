@@ -268,8 +268,8 @@ export const recentLeadsData = [
   },
   {
     id: "L-1007",
-    name: "Arham Khan",
-    company: "Weblabs Studio",
+    name: "Jefrey Peralta",
+    company: "Velocity Funds",
     status: "Won",
     source: "Website",
     lastActivity: "6h ago",
@@ -331,3 +331,4 @@ export const recentLeadsData = [
     lastActivity: "3d ago",
   },
 ];
+
