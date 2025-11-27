@@ -40,6 +40,11 @@ export const sidebarItems: NavGroup[] = [
     label: "Dashboards",
     items: [
       {
+        title: "VID",
+        url: "/dashboard/default",
+        icon: LayoutDashboard,
+      },
+      {
         title: "Trader Dashboard",
         url: "/admin/trader-dashboard",
         icon: LineChart,
