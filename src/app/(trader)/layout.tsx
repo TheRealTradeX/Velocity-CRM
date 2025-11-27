@@ -1,12 +1,15 @@
 "use client";
 
 import Link from "next/link";
-import { ReactNode } from "react";
+import { ReactNode, useMemo, useState } from "react";
 import { usePathname } from "next/navigation";
 
-import { Home, Gauge, Wallet2, HandCoins, Bell, Medal, ClipboardList } from "lucide-react";
+import { Home, Gauge, Wallet2, HandCoins, Bell, Medal, ClipboardList, Settings } from "lucide-react";
 
+import TraderLayoutControls from "@/app/(trader)/trader/_components/trader-layout-controls";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { usePreferencesStore } from "@/stores/preferences/preferences-provider";
+import type { ContentLayout, NavbarStyle, SidebarCollapsible, SidebarVariant } from "@/types/preferences/layout";
 
 const navLinks = [
   { href: "/trader", label: "Trader Home", icon: Home },
@@ -20,49 +23,118 @@ const navLinks = [
 
 const trader = { name: "Jefrey Peralta", email: "trader@velocityfunds.io" };
 
+const DEFAULT_LAYOUT: {
+  variant: SidebarVariant;
+  collapsible: SidebarCollapsible;
+  contentLayout: ContentLayout;
+  navbarStyle: NavbarStyle;
+} = {
+  variant: "sidebar",
+  collapsible: "icon",
+  contentLayout: "full-width",
+  navbarStyle: "sticky",
+};
+
 export default function TraderLayout({ children }: Readonly<{ children: ReactNode }>) {
   const pathname = usePathname();
+  const themeMode = usePreferencesStore((s) => s.themeMode);
+
+  const [layout, setLayout] = useState(DEFAULT_LAYOUT);
+
+  const contentClasses = useMemo(
+    () => (layout.contentLayout === "centered" ? "mx-auto max-w-screen-xl" : "mx-auto max-w-screen-2xl"),
+    [layout.contentLayout],
+  );
+
+  const sidebarClasses = useMemo(() => {
+    if (layout.variant === "floating") {
+      return "lg:w-72 lg:border border-border/70 lg:m-4 lg:rounded-2xl lg:shadow-[0_24px_70px_rgba(0,0,0,0.65)]";
+    }
+    if (layout.variant === "inset") {
+      return "lg:w-64 lg:border-r";
+    }
+    return "lg:w-72 lg:border-r";
+  }, [layout.variant]);
+
+  const headerClasses = useMemo(
+    () =>
+      [
+        "mb-4 flex flex-col gap-3 lg:mb-6 lg:flex-row lg:items-center lg:justify-between",
+        layout.navbarStyle === "sticky"
+          ? "lg:sticky lg:top-0 lg:z-40 lg:backdrop-blur-md lg:bg-background/70 lg:border-b lg:border-border/60"
+          : "",
+      ].join(" "),
+    [layout.navbarStyle],
+  );
 
   return (
-    <div className="min-h-screen bg-[color:var(--velocity-bg)] text-foreground">
+    <div
+      className="min-h-screen bg-[color:var(--velocity-bg)] text-foreground"
+      data-sidebar-variant={layout.variant}
+      data-sidebar-collapsible={layout.collapsible}
+      data-content-layout={layout.contentLayout}
+      data-theme-mode={themeMode}
+    >
       <div className="flex min-h-screen flex-col lg:flex-row">
-        <aside className="relative border-border/70 bg-[color:var(--velocity-card)]/80 px-6 py-6 shadow-[0_20px_60px_rgba(0,0,0,0.5)] lg:w-72 lg:border-r lg:border-border/60">
+        <aside
+          className={`relative flex-none border-border/70 bg-[color:var(--velocity-card)]/80 px-6 py-6 shadow-[0_20px_60px_rgba(0,0,0,0.5)] lg:border-border/60 lg:sticky lg:top-0 lg:h-screen ${sidebarClasses}`}
+        >
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_10%_20%,rgba(52,211,153,0.16),transparent_30%),radial-gradient(circle_at_90%_10%,rgba(14,165,233,0.12),transparent_30%),linear-gradient(135deg,rgba(255,255,255,0.04),transparent)]" />
-          <Link href="/trader" className="flex items-center gap-3">
-            <div className="bg-emerald-500/20 text-emerald-300 flex size-11 items-center justify-center rounded-full text-lg font-semibold shadow-[0_10px_40px_rgba(52,211,153,0.35)]">
-              VF
+          <div className="relative flex h-full flex-col">
+            <Link href="/trader" className="flex items-center gap-3">
+              <div className="bg-emerald-500/20 text-emerald-300 flex size-11 items-center justify-center rounded-full text-lg font-semibold shadow-[0_10px_40px_rgba(52,211,153,0.35)]">
+                VF
+              </div>
+              <div className="leading-tight">
+                <p className="text-[0.72rem] font-semibold uppercase tracking-[0.24em] text-[color:var(--velocity-muted)]">
+                  Velocity Funds
+                </p>
+                <p className="text-lg font-semibold">Trader Portal</p>
+              </div>
+            </Link>
+            <nav className="relative mt-7 space-y-1 text-sm font-medium">
+              {navLinks.map((item) => {
+                const isActive = pathname === item.href || pathname.startsWith(`${item.href}/`);
+                const Icon = item.icon;
+                return (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className={[
+                      "flex items-center gap-2 rounded-lg px-3 py-2 transition-all border border-transparent",
+                      "text-[color:var(--velocity-muted)] hover:text-foreground hover:bg-[rgba(255,255,255,0.02)] hover:border-[color:var(--velocity-border)]",
+                      isActive ? "border-[color:var(--velocity-accent)]/50 bg-[rgba(52,211,153,0.06)] text-foreground shadow-[0_15px_50px_rgba(52,211,153,0.22)]" : "",
+                    ].join(" ")}
+                  >
+                    {Icon ? <Icon className="size-4 text-emerald-300" /> : null}
+                    <span>{item.label}</span>
+                  </Link>
+                );
+              })}
+            </nav>
+            <div className="mt-auto pt-6">
+              <Link
+                href="/trader/settings"
+                className="flex items-center gap-2 rounded-lg border border-[color:var(--velocity-border)] bg-[rgba(255,255,255,0.03)] px-3 py-2 text-sm text-foreground transition hover:border-[color:var(--velocity-accent)]/60 hover:bg-[rgba(52,211,153,0.08)]"
+              >
+                <Settings className="size-4 text-emerald-300" />
+                Settings (coming soon)
+              </Link>
             </div>
-            <div className="leading-tight">
-              <p className="text-[0.72rem] font-semibold uppercase tracking-[0.24em] text-[color:var(--velocity-muted)]">
-                Velocity Funds
-              </p>
-              <p className="text-lg font-semibold">Trader Portal</p>
-            </div>
-          </Link>
-          <nav className="relative mt-7 space-y-1 text-sm font-medium">
-            {navLinks.map((item) => {
-              const isActive = pathname === item.href || pathname.startsWith(`${item.href}/`);
-              const Icon = item.icon;
-              return (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className={[
-                    "flex items-center gap-2 rounded-lg px-3 py-2 transition-all border border-transparent",
-                    "text-[color:var(--velocity-muted)] hover:text-foreground hover:bg-[rgba(255,255,255,0.02)] hover:border-[color:var(--velocity-border)]",
-                    isActive ? "border-[color:var(--velocity-accent)]/50 bg-[rgba(52,211,153,0.06)] text-foreground shadow-[0_15px_50px_rgba(52,211,153,0.22)]" : "",
-                  ].join(" ")}
-                >
-                  {Icon ? <Icon className="size-4 text-emerald-300" /> : null}
-                  <span>{item.label}</span>
-                </Link>
-              );
-            })}
-          </nav>
+          </div>
         </aside>
         <main className="flex-1 bg-background">
-          <div className="mx-auto w-full max-w-screen-2xl px-4 py-6 md:px-6 md:py-8 lg:px-8 lg:py-10">
-            <div className="mb-4 flex flex-col gap-3 lg:mb-6 lg:flex-row lg:items-center lg:justify-end">
+          <div className={`w-full px-4 py-6 md:px-6 md:py-8 lg:px-8 lg:py-10 ${contentClasses}`}>
+            <div className={headerClasses} data-navbar-style={layout.navbarStyle}>
+              <div className="flex items-center gap-2">
+                <TraderLayoutControls
+                  variant={layout.variant}
+                  collapsible={layout.collapsible}
+                  contentLayout={layout.contentLayout}
+                  navbarStyle={layout.navbarStyle}
+                  onLayoutChange={(partial) => setLayout((prev) => ({ ...prev, ...partial }))}
+                />
+              </div>
               <div className="flex items-center gap-3 rounded-full border border-border/70 bg-[color:var(--velocity-card)]/90 px-4 py-2 shadow-[0_12px_30px_rgba(0,0,0,0.45)]">
                 <div className="text-right leading-tight">
                   <div className="text-sm font-semibold">{trader.name}</div>

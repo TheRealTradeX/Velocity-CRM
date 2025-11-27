@@ -46,7 +46,7 @@ export const sidebarItems: NavGroup[] = [
       },
       {
         title: "Trader Dashboard",
-        url: "/dashboard/trader-dashboard",
+        url: "/trader",
         icon: LineChart,
       },
       {

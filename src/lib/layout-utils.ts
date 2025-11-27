@@ -6,8 +6,6 @@ export function updateContentLayout(value: "centered" | "full-width") {
 }
 
 export function updateNavbarStyle(value: "sticky" | "scroll") {
-  const target = document.querySelector("header[data-navbar-style]");
-  if (target) {
-    target.setAttribute("data-navbar-style", value);
-  }
+  const targets = document.querySelectorAll('[data-navbar-style]');
+  targets.forEach((node) => node.setAttribute("data-navbar-style", value));
 }
