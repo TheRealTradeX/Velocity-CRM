@@ -3,12 +3,13 @@ import packageJson from "../../package.json";
 const currentYear = new Date().getFullYear();
 
 export const APP_CONFIG = {
-  name: "Velocity Funds CRM",
+  name: "Velocity CRM",
   version: packageJson.version,
-  copyright: `(c) ${currentYear}, Velocity Funds CRM.`,
+  copyright: `(c) ${currentYear}, Velocity Funds.`,
+  url: "https://app.velocityfunds.io",
   meta: {
-    title: "Velocity Funds Admin Dashboard",
+    title: "Velocity CRM - Admin Dashboard for Velocity Funds",
     description:
-      "Internal admin dashboard for Velocity Funds \u2013 trader evaluations, risk, and payouts.",
+      "Internal command center for Velocity Funds, a futures prop firm.",
   },
 };

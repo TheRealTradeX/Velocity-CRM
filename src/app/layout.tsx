@@ -14,8 +14,13 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(APP_CONFIG.url),
   title: APP_CONFIG.meta.title,
   description: APP_CONFIG.meta.description,
+  applicationName: APP_CONFIG.name,
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default async function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
