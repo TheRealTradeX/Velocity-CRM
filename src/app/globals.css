@@ -49,72 +49,72 @@
 /* Default theme styles (used when no data-theme-preset is set or when 'default' is selected).
 These serve as the fallback; there is no separate default.css file. */
 :root {
-  --radius: 0.625rem;
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.3211 0 0);
-  --chart-2: oklch(0.4495 0 0);
-  --chart-3: oklch(0.5693 0 0);
-  --chart-4: oklch(0.6830 0 0);
-  --chart-5: oklch(0.7921 0 0);
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
+  --radius: 0.85rem;
+  --background: #000000;
+  --foreground: #f8fafc;
+  --card: #0a0a0a;
+  --card-foreground: #e5e7eb;
+  --popover: #0a0a0a;
+  --popover-foreground: #f8fafc;
+  --primary: #34d399;
+  --primary-foreground: #052e16;
+  --secondary: #0f172a;
+  --secondary-foreground: #e5e7eb;
+  --muted: #111827;
+  --muted-foreground: #a3a3a3;
+  --accent: #34d399;
+  --accent-foreground: #03160d;
+  --destructive: #ef4444;
+  --border: #262626;
+  --input: #262626;
+  --ring: #34d399;
+  --chart-1: #34d399;
+  --chart-2: #22d3ee;
+  --chart-3: #f59e0b;
+  --chart-4: #a855f7;
+  --chart-5: #f43f5e;
+  --sidebar: #05070d;
+  --sidebar-foreground: #f8fafc;
+  --sidebar-primary: #34d399;
+  --sidebar-primary-foreground: #03160d;
+  --sidebar-accent: #0b1220;
+  --sidebar-accent-foreground: #e5e7eb;
+  --sidebar-border: #1f2937;
+  --sidebar-ring: #34d399;
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.9521 0 0);
-  --chart-2: oklch(0.8576 0 0);
-  --chart-3: oklch(0.7572 0 0);
-  --chart-4: oklch(0.6534 0 0);
-  --chart-5: oklch(0.5452 0 0);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
+  --background: #000000;
+  --foreground: #f8fafc;
+  --card: #0a0a0a;
+  --card-foreground: #e5e7eb;
+  --popover: #0a0a0a;
+  --popover-foreground: #f8fafc;
+  --primary: #34d399;
+  --primary-foreground: #052e16;
+  --secondary: #0f172a;
+  --secondary-foreground: #e5e7eb;
+  --muted: #111827;
+  --muted-foreground: #a3a3a3;
+  --accent: #34d399;
+  --accent-foreground: #03160d;
+  --destructive: #ef4444;
+  --border: #262626;
+  --input: #262626;
+  --ring: #34d399;
+  --chart-1: #34d399;
+  --chart-2: #22d3ee;
+  --chart-3: #f59e0b;
+  --chart-4: #a855f7;
+  --chart-5: #f43f5e;
+  --sidebar: #05070d;
+  --sidebar-foreground: #f8fafc;
+  --sidebar-primary: #34d399;
+  --sidebar-primary-foreground: #03160d;
+  --sidebar-accent: #0b1220;
+  --sidebar-accent-foreground: #e5e7eb;
+  --sidebar-border: #1f2937;
+  --sidebar-ring: #34d399;
 }
 
 @layer utilities {
@@ -158,6 +158,51 @@ These serve as the fallback; there is no separate default.css file. */
 
   body {
     @apply bg-background text-foreground overscroll-none;
+  }
+}
+
+:root {
+  --velocity-bg: #000000;
+  --velocity-card: #0b0f1a;
+  --velocity-border: #262626;
+  --velocity-accent: #34d399;
+  --velocity-accent-soft: rgba(52, 211, 153, 0.16);
+  --velocity-danger: #f87171;
+  --velocity-text: #f8fafc;
+  --velocity-muted: #a3a3a3;
+}
+
+@layer components {
+  .glass-card {
+    @apply relative overflow-hidden rounded-2xl border border-[color:var(--velocity-border)] bg-[color:var(--velocity-card)]/90 backdrop-blur-2xl shadow-[0_24px_70px_rgba(0,0,0,0.6)];
+  }
+
+  .glass-card::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    background:
+      radial-gradient(circle at 12% 18%, rgba(52, 211, 153, 0.16), transparent 32%),
+      radial-gradient(circle at 88% 16%, rgba(14, 165, 233, 0.14), transparent 30%),
+      linear-gradient(135deg, rgba(52, 211, 153, 0.08), rgba(255, 255, 255, 0.03));
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .glass-card::after {
+    content: "";
+    position: absolute;
+    inset: 1px;
+    border-radius: inherit;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), transparent 55%);
+    opacity: 0.9;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .glass-card > * {
+    position: relative;
+    z-index: 1;
   }
 }
 
